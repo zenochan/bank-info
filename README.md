@@ -10,7 +10,7 @@ repositeries{
   maven { url "http://maven.mjtown.cn/"}
 }
 dependencies{
-  compile "name.zeno:bank-info:0.0.1"
+  compile "name.zeno:bankinfo:0.0.1"
 }
 ```
 
