@@ -1,68 +1,21 @@
 apply plugin: 'java'
-apply plugin: 'maven'
+apply from: 'http://maven.mjtown.cn/maven-java.gradle'
+mavenConf {
+  projectName "BankInfo"
+  projectDesc "通过银行卡前六位获取银行名称"
+  projectUrl "https://github.com/zenochan/bankinfo/"
+
+  groupId "name.zeno"
+  artifactId "bankinfo"
+  version "0.0.2"
+
+//  repositoryUrl "file:///Users/zenochan/.m2/repository"
+  repositoryUrl "scp://root@121.43.123.201/root/nginx/maven"
+}
+confMaven()
 
 dependencies {
   compile fileTree(dir: 'libs', include: ['*.jar'])
-}
-
-sourceCompatibility = "1.8"
-targetCompatibility = "1.8"
-
-def versionName = "0.0.1";
-
-
-uploadArchives {
-  repositories {
-    mavenDeployer {
-      repository(url: "file:///Users/zenochan/.m2/repository")
-
-      pom.groupId = "name.zeno"
-      pom.artifactId = 'bankinfo'
-      pom.version = versionName;
-
-      pom.project {
-        name 'Bank Info'
-        packaging 'jar'
-        description '通过银行卡前六位获取银行名称'
-        url 'https://github.com/zenochan/bankinfo'
-
-        scm {
-          url 'https://github.com/zenochan/bankinfo'
-          connection 'https://github.com/zenochan/bankinfo'
-          developerConnection 'https://github.com/zenochan/bankinfo'
-        }
-
-        licenses {
-          license {
-            name 'The Apache Software License, Version 2.0'
-            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-            distribution 'Apache-2.0'
-          }
-        }
-
-        developers {
-          developer {
-            id 'zenochan'
-            name 'Zeno Chan'
-            email 'zenochan@qq.com'
-          }
-        }
-      }
-    }
-  }
-}
-
-def srcDirs = "src/main/";
-task sourcesJar(type: Jar) {
-  from srcDirs;
-  classifier = 'sources'
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-  classifier = 'javadoc'
-  from javadoc.destinationDir
-}
-artifacts {
-  archives javadocJar
-  archives sourcesJar
+  sourceCompatibility = '1.7'
+  targetCompatibility = '1.7'
 }
